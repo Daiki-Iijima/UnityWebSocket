@@ -25,6 +25,24 @@ public class NetworkUtils
 #endif
     }
 
+    public static string GetIPFromInterface()
+    {
+        foreach (var networkInterface in System.Net.NetworkInformation.NetworkInterface.GetAllNetworkInterfaces())
+        {
+            foreach (var ip in networkInterface.GetIPProperties().UnicastAddresses)
+            {
+                if (ip.Address.AddressFamily == AddressFamily.InterNetwork) // IPv4アドレスのみ
+                {
+                    if (ip.Address.ToString().Contains("192.168."))
+                    {
+                        return ip.Address.ToString();
+                    }
+                }
+            }
+        }
+        return "";
+    }
+
     private static string GetEditorIPAddress()
     {
         try
