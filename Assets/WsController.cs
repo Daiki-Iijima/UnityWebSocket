@@ -10,8 +10,6 @@ public class WsController : MonoBehaviour
 {
     [SerializeField] private UIDocument document;
 
-    [SerializeField] private string myIp;
-    
     private ClientView _clientView;
     private ServerView _serverView;
     
@@ -86,7 +84,7 @@ public class WsController : MonoBehaviour
 
     private void StartServer()
     {
-        string url = "ws://"+myIp+":"+_serverView.IpTf.value;
+        string url = "ws://"+NetworkUtils.GetLocalIPAddress()+":"+_serverView.IpTf.value;
         _wssr =new WebSocketServer(url);
         _wssr.AddWebSocketService<MyWs>("/ws",myWs =>
         {
