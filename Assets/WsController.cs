@@ -2,6 +2,7 @@ using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 using UnityEngine.UIElements;
 using WebSocketSharp;
 using WebSocketSharp.Server;
@@ -18,6 +19,8 @@ public class WsController : MonoBehaviour
 
     private readonly ConcurrentQueue<Action> _clientActions = new ();
     private readonly Queue<Action> _mainThreadActions = new ();
+
+    [SerializeField] private Font jpFont;
     
     void Start()
     {
@@ -141,6 +144,7 @@ public class WsController : MonoBehaviour
         {
             Label label = new Label(message);
             label.style.color = Color.white;
+            label.style.unityFont = jpFont;
            _serverView.MessageList.Add(label);
         });
     }

@@ -338,7 +338,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   document: {fileID: 1992576639}
-  myIp: 192.168.0.80
+  jpFont: {fileID: 2230732570650464555, guid: 42d171408ff9b8244a9929be430c2fb1, type: 3}
 --- !u!4 &1066225197
 Transform:
   m_ObjectHideFlags: 0
